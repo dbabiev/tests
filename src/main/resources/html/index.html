@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app="ProductModule">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+    <script src="../js/app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+<body ng-controller="ProductController as productController">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th><a ng-click="sort('title')" href="#">Название</a></th>
+                <th><a ng-click="sort('group')" href="#">Группа</a></th>
+                <th><a ng-click="sort('proteins')" href="#">Белки</a></th>
+                <th><a ng-click="sort('fats')" href="#">Жиры</a></th>
+                <th><a ng-click="sort('carbos')" href="#">Углеводы</a></th>
+                <th><a ng-click="sort('calories')" href="#">Калории</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="product in products | orderBy:columnToOrder:reverse">
+                <td>{{product.title}}</td>
+                <td>{{product.group}}</td>
+                <td>{{product.proteins}}</td>
+                <td>{{product.fats}}</td>
+                <td>{{product.carbos}}</td>
+                <td>{{product.calories}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <ul class="pagination pagination-sm">
+        <li ng-class="{active:0}">
+            <a href="#" ng-click="firstPage()">В начало</a>
+        </li>
+        <li ng-repeat="n in range(products.length)">
+            <a href="#" ng-click="setPage()" ng-bind="n+1">1</a>
+        </li>
+        <li>
+            <a href="#" ng-click="lastPage()">В конец</a>
+        </li>
+    </ul>
+</body>
+</html>
