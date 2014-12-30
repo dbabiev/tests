@@ -57,7 +57,7 @@ app.controller('ProductController', function($scope, $filter){
         return ret;
     };
 
-    $scope.sort('name');
+    $scope.sort('title');
 })
 
 function getProducts(){
