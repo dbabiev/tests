@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="product in products | orderBy:columnToOrder:reverse">
+            <tr ng-repeat="product in productsByPage[currentPage] | orderBy:columnToOrder:reverse">
                 <td>{{product.title}}</td>
                 <td>{{product.group}}</td>
                 <td>{{product.proteins}}</td>
@@ -33,7 +33,7 @@
         <li ng-class="{active:0}">
             <a href="#" ng-click="firstPage()">В начало</a>
         </li>
-        <li ng-repeat="n in range(products.length)">
+        <li ng-repeat="n in range(productsByPage.length)">
             <a href="#" ng-click="setPage()" ng-bind="n+1">1</a>
         </li>
         <li>
